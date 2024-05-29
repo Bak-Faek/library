@@ -17,7 +17,7 @@ export class OuvrageDAO {
     });
   }
 
-  select() {
+  read() {
     const query = `select * from ouvrage;`;
     const values = [];
     this.connection.execute(query, values, (err, result) => {

@@ -4,8 +4,14 @@
 // import { ReservationDAO } from "./model/ReservationDAO.js";
 // import { LendingDAO } from "./model/LendingDAO.js";
 import express from "express";
+// import Router from "./router";
+const Router = express.Router();
+
 const app = express();
-import ouvrageController from "./controller/ouvrageController.js";
+app.use(express.json());
+app.use("/api", Router);
+
+import ouvrageController from "./controller/OuvrageController.js";
 
 // const db = new Database();
 
@@ -13,8 +19,6 @@ import ouvrageController from "./controller/ouvrageController.js";
 // const ouvrageDAO = new OuvrageDAO(db);
 // const reservationDAO = new ReservationDAO(db);
 // const lendingDAO = new LendingDAO(db);
-
-
 
 // adherent
 // adherentDAO.create(
@@ -37,7 +41,6 @@ import ouvrageController from "./controller/ouvrageController.js";
 //   "eve.updated@example.com"
 // );
 
-
 // ouvrage
 // ouvrageDAO.create("Book Title", "Book Author", "2024-05-28", 1);
 // ouvrageDAO.selectById(1);
@@ -54,11 +57,11 @@ import ouvrageController from "./controller/ouvrageController.js";
 
 //lending
 // lendingDAO.create("2024-05-28", "2024-06-28", 1, 1);
-// lendingDAO.selectById(1); 
-// lendingDAO.update(1, "2024-05-29", "2024-06-29", 1, 6); 
+// lendingDAO.selectById(1);
+// lendingDAO.update(1, "2024-05-29", "2024-06-29", 1, 6);
 // lendingDAO.delete(11);
 
-app.get("/ouvrage", ouvrageController.read);
+Router.get("/ouvrage", ouvrageController.read);
 
 // db.stop();
 

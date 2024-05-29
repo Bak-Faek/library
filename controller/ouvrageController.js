@@ -1,5 +1,5 @@
-import { OuvrageDAO } from "../model/OuvrageDAO";
-import { Database } from "../model/Database";
+import { OuvrageDAO } from "../model/OuvrageDAO.js";
+import { Database } from "../model/Database.js";
 
 const db = new Database();
 const ouvrageDAO = new OuvrageDAO(db);
@@ -13,10 +13,7 @@ const read = async (req, res, next) => {
     next(err);
   }
 };
-db.stop();
 
-module.exports = {
-  read,
+export default {
+  read
 };
-
-

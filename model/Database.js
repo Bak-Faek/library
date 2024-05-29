@@ -8,13 +8,13 @@ export class Database {
         this.connection = mysql.createConnection({
           host: 'localhost',
           user: 'root',
-          password: 'root',
+          password: 'Banokfaek1989+',
           database: 'library',
         })
+        console.log(`I am using ${this.connection.config.database}` );
     }
 
-    stop() {
-        this.connection.end()
-    }
-
+    // stop() {
+    //     this.connection.end()
+    // }
 }
