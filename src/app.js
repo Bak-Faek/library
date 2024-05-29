@@ -1,17 +1,19 @@
+const express = require("express");
+const Router = require("./router");
+
+const app = express();
+app.use(express.json());
+app.use("/", Router);
+
+
+module.exports = app;
+
 // import { Database } from "./model/Database.js";
 // import { AdherentDAO } from "./model/AdherentDAO.js";
 // import { OuvrageDAO } from "./model/OuvrageDAO.js";
 // import { ReservationDAO } from "./model/ReservationDAO.js";
 // import { LendingDAO } from "./model/LendingDAO.js";
-import express from "express";
-// import Router from "./router";
-const Router = express.Router();
 
-const app = express();
-app.use(express.json());
-app.use("/api", Router);
-
-import ouvrageController from "./controller/OuvrageController.js";
 
 // const db = new Database();
 
@@ -61,12 +63,5 @@ import ouvrageController from "./controller/OuvrageController.js";
 // lendingDAO.update(1, "2024-05-29", "2024-06-29", 1, 6);
 // lendingDAO.delete(11);
 
-Router.get("/ouvrage", ouvrageController.read);
-
 // db.stop();
 
-const port = 3310;
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});

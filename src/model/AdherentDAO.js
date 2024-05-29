@@ -8,7 +8,7 @@ export class AdherentDAO {
     const query = `INSERT INTO adherent (firstname, lastname, address, phone, email) VALUES (?, ?, ?, ?, ?);
     `;
     const values = [firstname, lastname, address, phone, email];
-    this.connection.execute(query, values, (err, result, fields) => {
+    this.connection.execute(query, values, (err, result) => {
       if (err) {
         console.error(err);
         return;
@@ -21,7 +21,7 @@ export class AdherentDAO {
     const query = `select * from adherent;
     `;
     const values = [];
-    this.connection.execute(query, values, (err, result, fields) => {
+    this.connection.execute(query, values, (err, result) => {
       if (err) {
         console.error(err);
         return;
@@ -34,7 +34,7 @@ export class AdherentDAO {
     const query = `select * from adherent where id = ?;
     `;
     const values = [id];
-    this.connection.execute(query, values, (err, result, fields) => {
+    this.connection.execute(query, values, (err, result) => {
       if (err) {
         console.error(err);
         return;
@@ -46,7 +46,7 @@ export class AdherentDAO {
   selectFilter(filter, value) {
     const query = `SELECT * FROM adherent WHERE ${filter} = ?;`;
     const values = [value];
-    this.connection.execute(query, values, (err, result, fields) => {
+    this.connection.execute(query, values, (err, result) => {
       if (err) {
         console.error(err);
         return;
@@ -59,7 +59,7 @@ export class AdherentDAO {
     const query = `update adherent SET firstname = ?, lastname = ?, address = ?, phone = ?, email=? WHERE id = ?;
     `;
     const values = [firstname, lastname, address, phone, email, id];
-    this.connection.execute(query, values, (err, result, fields) => {
+    this.connection.execute(query, values, (err, result) => {
       if (err) {
         console.error(err);
         return;
@@ -72,7 +72,7 @@ export class AdherentDAO {
     const query = `delete from adherent where id = ?;
     `;
     const values = [id];
-    this.connection.execute(query, values, (err, result, fields) => {
+    this.connection.execute(query, values, (err, result) => {
       if (err) {
         console.error(err);
         return;
