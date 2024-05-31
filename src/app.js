@@ -1,12 +1,17 @@
-const express = require("express");
-const Router = require("./router");
+import express from "express"
+import router from "./router.js";
 
-const app = express();
+const app = express()
 app.use(express.json());
-app.use("/", Router);
+app.use('/', router)
 
 
-module.exports = app;
+app.listen(8100, () => {
+    console.log("Server stared ....")
+})
+
+
+export default app;
 
 // import { Database } from "./model/Database.js";
 // import { AdherentDAO } from "./model/AdherentDAO.js";

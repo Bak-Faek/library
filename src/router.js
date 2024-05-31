@@ -1,8 +1,11 @@
-const express  = require("express");
+import express from "express"
+import OuvrageController from "./controller/OuvrageController.js";
+
+
 const router = express.Router();
 
-const ouvrageController = require("./controller/OuvrageController.js");
 
-router.get("/ouvrage", ouvrageController.read);
 
-module.exports = router;
+router.get("/ouvrage", OuvrageController.read);
+
+export default router;

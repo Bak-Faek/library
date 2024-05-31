@@ -1,16 +1,22 @@
+import {Database} from "../model/Database.js";
+import {OuvrageDAO} from "../model/OuvrageDAO.js";
 
-const tables = require("../tables.js");
+const db = new Database();
+const ouvrageDAO = new OuvrageDAO(db);
 
-const read = async (req, res, next) => {
-  try {
-    const ouvrage = await tables.ouvrage.read();
+const read = (req, res) => {
+  ouvrageDAO.read((data, error) => {
+      if (error) {
+          res.status(500)
+          res.json({
+              message: "Error mysql !"
+          })
+      }
+      res.json(data)
+  })
+}
 
-    const result = res.json(ouvrage);
-  } catch (err) {
-    next(err);
-  }
-};
 
-module.exports= {
+export default {
   read
 };
