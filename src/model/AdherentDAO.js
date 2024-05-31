@@ -5,79 +5,91 @@ export class AdherentDAO {
   }
 
   create(firstname, lastname, address, phone, email) {
-    const query = `INSERT INTO adherent (firstname, lastname, address, phone, email) VALUES (?, ?, ?, ?, ?);
+    return new Promise((resolve, reject) => {
+      const query = `INSERT INTO adherent (firstname, lastname, address, phone, email) VALUES (?, ?, ?, ?, ?);
     `;
-    const values = [firstname, lastname, address, phone, email];
-    this.connection.execute(query, values, (err, result) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      console.log(result, "RESULT");
+      const values = [firstname, lastname, address, phone, email];
+      this.connection.execute(query, values, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
     });
   }
 
   read() {
-    const query = `select * from adherent;
+    return new Promise((resolve, reject) => {
+      const query = `select * from adherent;
     `;
-    const values = [];
-    this.connection.execute(query, values, (err, result) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      console.log(result, "RESULT");
+      const values = [];
+      this.connection.execute(query, values, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
     });
   }
 
   readById(id) {
-    const query = `select * from adherent where id = ?;
+    return new Promise((resolve, reject) => {
+      const query = `select * from adherent where id = ?;
     `;
-    const values = [id];
-    this.connection.execute(query, values, (err, result) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      console.log(result, "RESULT");
+      const values = [id];
+      this.connection.execute(query, values, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
     });
   }
 
   selectFilter(filter, value) {
-    const query = `SELECT * FROM adherent WHERE ${filter} = ?;`;
-    const values = [value];
-    this.connection.execute(query, values, (err, result) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      console.log(result, "RESULT");
+    return new Promise((resolve, reject) => {
+      const query = `SELECT * FROM adherent WHERE ${filter} = ?;`;
+      const values = [value];
+      this.connection.execute(query, values, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
     });
   }
 
-  update(id, firstname, lastname, address, phone, email) {
-    const query = `update adherent SET firstname = ?, lastname = ?, address = ?, phone = ?, email=? WHERE id = ?;
+  update(firstname, lastname, address, phone, email, id) {
+    return new Promise((resolve, reject) => {
+      const query = `update adherent SET firstname = ?, lastname = ?, address = ?, phone = ?, email=? WHERE id = ?;
     `;
-    const values = [firstname, lastname, address, phone, email, id];
-    this.connection.execute(query, values, (err, result) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      console.log(result, "RESULT");
+      const values = [firstname, lastname, address, phone, email, id];
+      this.connection.execute(query, values, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
     });
   }
 
   delete(id) {
-    const query = `delete from adherent where id = ?;
+    return new Promise((resolve, reject) => {
+      const query = `delete from adherent where id = ?;
     `;
-    const values = [id];
-    this.connection.execute(query, values, (err, result) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      console.log(result, "RESULT");
+      const values = [id];
+      this.connection.execute(query, values, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
     });
   }
 }
