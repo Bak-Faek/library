@@ -15,6 +15,17 @@ const read = (req, res) => {
     });
 };
 
+const readById = (req, res) => {
+  ouvrageDAO
+    .readById()
+    .then((allOuvrage) => {
+      res.json(allOuvrage);
+    })
+    .catch((error) => {
+      res.json(error);
+    });
+};
+
 const create = (req, res) => {
   const { name, author, publication_date, category_id } = req.body;
   ouvrageDAO
@@ -54,6 +65,7 @@ const deleteById = (req, res) => {
 
 export default {
   read,
+  readById,
   create,
   update,
   deleteById,

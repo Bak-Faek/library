@@ -15,6 +15,17 @@ const read = (req, res) => {
     });
 };
 
+const readById = (req, res) => {
+  reservationDAO
+    .readById()
+    .then((reservation) => {
+      res.json(reservation);
+    })
+    .catch((error) => {
+      res.json(error);
+    });
+};
+
 const create = (req, res) => {
   const { reservation_date, adherent_id, ouvrage_id } = req.body;
   reservationDAO
@@ -54,6 +65,7 @@ const deleteById = (req, res) => {
 
 export default {
   read,
+  readById,
   create,
   update,
   deleteById,

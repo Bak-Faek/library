@@ -15,6 +15,18 @@ const read = (req, res) => {
     });
 };
 
+const readById = (req, res) => {
+    const id = req.params.id;
+    adherentDAO
+      .readById(id)
+      .then((adherent) => {
+        res.json(adherent);
+      })
+      .catch((error) => {
+        res.json(error);
+      });
+  };
+
 const create = (req, res) => {
   const { firstname, lastname, address, phone,email } = req.body;
   adherentDAO
@@ -54,6 +66,7 @@ const deleteById = (req, res) => {
 
 export default {
   read,
+  readById,
   create,
   update,
   deleteById,
