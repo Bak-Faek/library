@@ -1,84 +1,95 @@
 export class LendingDAO {
-    constructor(db /* CLASS DATABASE */) {
-      //this.db = db;
-      this.connection = db.connection;
-    }
-  
-    create(lending_date, return_date, adherent_id, ouvrage_id) {
+  constructor(db /* CLASS DATABASE */) {
+    //this.db = db;
+    this.connection = db.connection;
+  }
+
+  create(lending_date, return_date, adherent_id, ouvrage_id) {
+    return new Promise((resolve, reject) => {
       const query = `INSERT INTO lending (lending_date, return_date, adherent_id, ouvrage_id) VALUES (?, ?, ?, ?);
       `;
       const values = [lending_date, return_date, adherent_id, ouvrage_id];
-      this.connection.execute(query, values, (err, result, fields) => {
+      this.connection.execute(query, values, (err, result) => {
         if (err) {
-          console.error(err);
-          return;
+          reject(err);
+        } else {
+          resolve(result);
         }
-        console.log(result, "RESULT");
       });
-    }
-  
-    select() {
+    });
+  }
+
+  read() {
+    return new Promise((resolve, reject) => {
       const query = `select * from lending;
       `;
       const values = [];
-      this.connection.execute(query, values, (err, result, fields) => {
+      this.connection.execute(query, values, (err, result) => {
         if (err) {
-          console.error(err);
-          return;
+          reject(err);
+        } else {
+          resolve(result);
         }
-        console.log(result, "RESULT");
       });
-    }
-  
-    selectById(id) {
+    });
+  }
+
+  readById(id) {
+    return new Promise((resolve, reject) => {
       const query = `select * from lending where id = ?;
       `;
       const values = [id];
-      this.connection.execute(query, values, (err, result, fields) => {
+      this.connection.execute(query, values, (err, result) => {
         if (err) {
-          console.error(err);
-          return;
+          reject(err);
+        } else {
+          resolve(result);
         }
-        console.log(result, "RESULT");
       });
-    }
-  
-    selectFilter(filter, value) {
+    });
+  }
+
+  selectFilter(filter, value) {
+    return new Promise((resolve, reject) => {
       const query = `SELECT * FROM lending JOIN adherent ON adherent_id = adherent.id JOIN ouvrage ON ouvrage_id = ouvrage.id WHERE ${filter} = ?;`;
       const values = [value];
-      this.connection.execute(query, values, (err, result, fields) => {
+      this.connection.execute(query, values, (err, result) => {
         if (err) {
-          console.error(err);
-          return;
+          reject(err);
+        } else {
+          resolve(result);
         }
-        console.log(result, "RESULT");
       });
-    }
-    
-    update(id, lending_date, return_date, adherent_id, ouvrage_id) {
+    });
+  }
+
+  update(lending_date, return_date, adherent_id, ouvrage_id,id) {
+    return new Promise((resolve, reject) => {
       const query = `update lending SET lending_date = ?, return_date = ?, adherent_id = ?, ouvrage_id=? WHERE id = ?;
       `;
       const values = [lending_date, return_date, adherent_id, ouvrage_id, id];
-      this.connection.execute(query, values, (err, result, fields) => {
+      this.connection.execute(query, values, (err, result) => {
         if (err) {
-          console.error(err);
-          return;
+          reject(err);
+        } else {
+          resolve(result);
         }
-        console.log(result, "RESULT");
       });
-    }
-  
-    delete(id) {
+    });
+  }
+
+  delete(id) {
+    return new Promise((resolve, reject) => {
       const query = `delete from lending where id = ?;
       `;
       const values = [id];
-      this.connection.execute(query, values, (err, result, fields) => {
+      this.connection.execute(query, values, (err, result) => {
         if (err) {
-          console.error(err);
-          return;
+          reject(err);
+        } else {
+          resolve(result);
         }
-        console.log(result, "RESULT");
       });
-    }
+    });
   }
-  
+}
