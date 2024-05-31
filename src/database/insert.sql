@@ -33,7 +33,7 @@ CREATE TABLE
         publication_date DATETIME,
         category_id INT NOT NULL,
         PRIMARY KEY (id),
-        FOREIGN KEY (category_id) REFERENCES category (id)
+        FOREIGN KEY (category_id) REFERENCES category (id) ON DELETE CASCADE
     );
 
 CREATE TABLE
@@ -43,8 +43,8 @@ CREATE TABLE
         adherent_id INT,
         ouvrage_id INT,
         PRIMARY KEY (id),
-        FOREIGN KEY (adherent_id) REFERENCES adherent (id),
-        FOREIGN KEY (ouvrage_id) REFERENCES ouvrage (id)
+        FOREIGN KEY (adherent_id) REFERENCES adherent (id) ON DELETE CASCADE,
+        FOREIGN KEY (ouvrage_id) REFERENCES ouvrage (id) ON DELETE CASCADE
     );
 
 CREATE TABLE
@@ -55,6 +55,6 @@ CREATE TABLE
         adherent_id INT,
         ouvrage_id INT,
         PRIMARY KEY (id),
-        FOREIGN KEY (adherent_id) REFERENCES adherent (id),
-        FOREIGN KEY (ouvrage_id) REFERENCES ouvrage (id)
+        FOREIGN KEY (adherent_id) REFERENCES adherent (id) ON DELETE CASCADE,
+        FOREIGN KEY (ouvrage_id) REFERENCES ouvrage (id)ON DELETE CASCADE
     );

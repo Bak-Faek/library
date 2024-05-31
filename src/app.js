@@ -6,8 +6,8 @@ app.use(express.json());
 app.use('/', router)
 
 
-app.listen(8100, () => {
-    console.log("Server stared ....")
+app.listen(8500, () => {
+    console.log("Server started ....")
 })
 
 
