@@ -33,7 +33,7 @@ export class OuvrageDAO {
     });
   }
 
-  selectById(id) {
+  readById(id) {
     return new Promise((resolve, reject) => {
       const query = "select * from ouvrage where id = ?;";
       const values = [id];

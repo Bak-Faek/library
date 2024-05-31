@@ -10,6 +10,7 @@ const router = express.Router();
 // CRUD Ouvrage
 router.get('/ouvrage', OuvrageController.read)
 router.get('/ouvrage/:id', OuvrageController.readById)
+router.get('/ouvrage/:field/:value', OuvrageController.readByField)
 router.post('/ouvrage', OuvrageController.create)
 router.put('/ouvrage/:id', OuvrageController.update)
 router.delete('/ouvrage/:id', OuvrageController.deleteById)

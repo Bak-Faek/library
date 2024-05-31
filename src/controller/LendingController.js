@@ -16,8 +16,9 @@ const read = (req, res) => {
 };
 
 const readById = (req, res) => {
+  const id = req.params.id;
   lendingDAO
-    .readById()
+    .readById(id)
     .then((lending) => {
       res.json(lending);
     })

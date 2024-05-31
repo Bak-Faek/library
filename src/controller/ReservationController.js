@@ -16,8 +16,9 @@ const read = (req, res) => {
 };
 
 const readById = (req, res) => {
+  const id = req.params.id;
   reservationDAO
-    .readById()
+    .readById(id)
     .then((reservation) => {
       res.json(reservation);
     })

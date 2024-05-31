@@ -16,8 +16,22 @@ const read = (req, res) => {
 };
 
 const readById = (req, res) => {
+  const id = req.params.id;
   ouvrageDAO
-    .readById()
+    .readById(id)
+    .then((allOuvrage) => {
+      res.json(allOuvrage);
+    })
+    .catch((error) => {
+      res.json(error);
+    });
+};
+
+const readByField = (req, res) => {
+  const field = req.params["field"];
+  const value = req.params["value"];
+  ouvrageDAO
+    .selectByField(field, value)
     .then((allOuvrage) => {
       res.json(allOuvrage);
     })
@@ -66,6 +80,7 @@ const deleteById = (req, res) => {
 export default {
   read,
   readById,
+  readByField,
   create,
   update,
   deleteById,
