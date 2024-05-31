@@ -27,6 +27,19 @@ const readById = (req, res) => {
     });
 };
 
+const readByField = (req, res) => {
+  const field = req.params["field"];
+  const value = req.params["value"];
+  lendingDAO
+    .selectFilter(field, value)
+    .then((allOuvrage) => {
+      res.json(allOuvrage);
+    })
+    .catch((error) => {
+      res.json(error);
+    });
+};
+
 const create = (req, res) => {
   const { lending_date, return_date, adherent_id, ouvrage_id } = req.body;
   lendingDAO
@@ -67,6 +80,7 @@ const deleteById = (req, res) => {
 export default {
   read,
   readById,
+  readByField,
   create,
   update,
   deleteById,

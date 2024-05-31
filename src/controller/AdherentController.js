@@ -27,6 +27,20 @@ const readById = (req, res) => {
       });
   };
 
+  const readByField = (req, res) => {
+    const field = req.params["field"];
+    const value = req.params["value"];
+    adherentDAO
+      .selectFilter(field, value)
+      .then((allOuvrage) => {
+        res.json(allOuvrage);
+      })
+      .catch((error) => {
+        res.json(error);
+      });
+  };
+  
+
 const create = (req, res) => {
   const { firstname, lastname, address, phone,email } = req.body;
   adherentDAO
@@ -67,6 +81,7 @@ const deleteById = (req, res) => {
 export default {
   read,
   readById,
+  readByField,
   create,
   update,
   deleteById,
