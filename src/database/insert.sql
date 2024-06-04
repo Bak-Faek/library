@@ -12,13 +12,14 @@ CREATE TABLE role (
 );
 
 -- Create the adherent table
-CREATE TABLE adherent (
+CREATE TABLE user (
     id INT NOT NULL AUTO_INCREMENT,
     firstname VARCHAR(200) NOT NULL,
     lastname VARCHAR(200) NOT NULL,
     address VARCHAR(200) NOT NULL,
     phone INT NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
     role_id INT NOT NULL DEFAULT 2,
     PRIMARY KEY (id),
     FOREIGN KEY (role_id) REFERENCES role (id) ON DELETE CASCADE
@@ -49,10 +50,10 @@ CREATE TABLE ouvrage (
 CREATE TABLE reservation (
     id INT NOT NULL AUTO_INCREMENT,
     reservation_date DATETIME,
-    adherent_id INT,
+    user_id INT,
     ouvrage_id INT,
     PRIMARY KEY (id),
-    FOREIGN KEY (adherent_id) REFERENCES adherent (id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE,
     FOREIGN KEY (ouvrage_id) REFERENCES ouvrage (id) ON DELETE CASCADE
 );
 
@@ -61,9 +62,9 @@ CREATE TABLE lending (
     id INT NOT NULL AUTO_INCREMENT,
     lending_date DATETIME,
     return_date DATETIME,
-    adherent_id INT,
+    user_id INT,
     ouvrage_id INT,
     PRIMARY KEY (id),
-    FOREIGN KEY (adherent_id) REFERENCES adherent (id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE,
     FOREIGN KEY (ouvrage_id) REFERENCES ouvrage (id) ON DELETE CASCADE
 );

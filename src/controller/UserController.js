@@ -1,14 +1,14 @@
 import { Database } from "../model/Database.js";
-import { AdherentDAO } from "../model/AdherentDAO.js";
+import { UserDAO } from "../model/UserDAO.js";
 
 const db = new Database();
-const adherentDAO = new AdherentDAO(db);
+const userDAO = new UserDAO(db);
 
 const read = (req, res) => {
-  adherentDAO
+  userDAO
     .read()
-    .then((adherent) => {
-      res.json(adherent);
+    .then((user) => {
+      res.json(user);
     })
     .catch((error) => {
       res.json(error);
@@ -17,10 +17,10 @@ const read = (req, res) => {
 
 const readById = (req, res) => {
     const id = req.params.id;
-    adherentDAO
+    userDAO
       .readById(id)
-      .then((adherent) => {
-        res.json(adherent);
+      .then((user) => {
+        res.json(user);
       })
       .catch((error) => {
         res.json(error);
@@ -30,10 +30,10 @@ const readById = (req, res) => {
   const readByField = (req, res) => {
     const field = req.params["field"];
     const value = req.params["value"];
-    adherentDAO
+    userDAO
       .selectFilter(field, value)
-      .then((allOuvrage) => {
-        res.json(allOuvrage);
+      .then((user) => {
+        res.json(user);
       })
       .catch((error) => {
         res.json(error);
@@ -43,10 +43,10 @@ const readById = (req, res) => {
 
 const create = (req, res) => {
   const { firstname, lastname, address, phone,email } = req.body;
-  adherentDAO
+  userDAO
     .create(firstname, lastname, address, phone,email)
-    .then((adherent) => {
-      res.json(adherent);
+    .then((user) => {
+      res.json(user);
     })
     .catch((error) => {
       res.json(error);
@@ -56,10 +56,10 @@ const create = (req, res) => {
 const update = (req, res) => {
   const id = req.params.id;
   const { firstname, lastname, address, phone,email } = req.body;
-  adherentDAO
+  userDAO
     .update(firstname, lastname, address, phone,email, id)
-    .then((adherent) => {
-      res.json(adherent);
+    .then((user) => {
+      res.json(user);
     })
     .catch((error) => {
       res.json(error);
@@ -68,10 +68,10 @@ const update = (req, res) => {
 
 const deleteById = (req, res) => {
   const id = req.params.id;
-  adherentDAO
+  userDAO
     .delete(id)
-    .then((adherent) => {
-      res.json(adherent);
+    .then((user) => {
+      res.json(user);
     })
     .catch((error) => {
       res.json(error);

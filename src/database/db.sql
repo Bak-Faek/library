@@ -5,13 +5,13 @@ VALUES
     ('Utilisateur');
 
 -- Insert data into adherent table
-INSERT INTO adherent (firstname, lastname, address, phone, email, role_id)
+INSERT INTO user (firstname, lastname, address, phone, email, password, role_id)
 VALUES
-    ('Alice', 'Dupont', '123 Rue de la Paix, Paris', 123456789, 'alice.dupont@example.com', 2),
-    ('Bob', 'Martin', '456 Avenue des Champs, Lyon', 987654321, 'bob.martin@example.com', 2),
-    ('Charlie', 'Durand', '789 Boulevard Saint-Michel, Marseille', 555123456, 'charlie.durand@example.com', 2),
-    ('Diane', 'Bernard', '101 Rue du Faubourg, Toulouse', 444987123, 'diane.bernard@example.com', 2),
-    ('Eve', 'Lemoine', '202 Place de la Victoire, Bordeaux', 333789654, 'eve.lemoine@example.com', 1);
+    ('Alice', 'Dupont', '123 Rue de la Paix, Paris', 123456789, 'alice.dupont@example.com','qsdfqsdfqsdfq', 2),
+    ('Bob', 'Martin', '456 Avenue des Champs, Lyon', 987654321, 'bob.martin@example.com','qsdfqsdfqsdf', 2),
+    ('Charlie', 'Durand', '789 Boulevard Saint-Michel, Marseille', 555123456, 'charlie.durand@example.com','qsdfqdfqsdf', 2),
+    ('Diane', 'Bernard', '101 Rue du Faubourg, Toulouse', 444987123, 'diane.bernard@example.com','qsdfqsdfqsdf', 2),
+    ('Eve', 'Lemoine', '202 Place de la Victoire, Bordeaux', 333789654, 'eve.lemoine@example.com','qdsfqsdfqsdf', 1);
 
 -- Insert data into category table
 INSERT INTO category (type, level, language, address)
@@ -42,7 +42,7 @@ VALUES
     ('César et Rosalie', 'Claude Sautet', '2024-06-10 14:00:00', 10);
 
 -- Insert data into reservation table
-INSERT INTO reservation (reservation_date, adherent_id, ouvrage_id)
+INSERT INTO reservation (reservation_date, user_id, ouvrage_id)
 VALUES
     ('2024-05-20 15:00:00', 1, 2),
     ('2024-05-25 10:00:00', 2, 3),
@@ -56,7 +56,7 @@ VALUES
     ('2024-06-30 16:00:00', 5, 10);
 
 -- Insert data into lending table
-INSERT INTO lending (lending_date, return_date, adherent_id, ouvrage_id)
+INSERT INTO lending (lending_date, return_date, user_id, ouvrage_id)
 VALUES
     ('2024-05-01 10:00:00', '2024-05-15 10:00:00', 1, 1),
     ('2024-04-20 14:30:00', '2024-05-20 14:30:00', 2, 2),
