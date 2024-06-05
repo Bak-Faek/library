@@ -2,14 +2,15 @@
 INSERT INTO role (role)
 VALUES
     ('Admin'),
-    ('Utilisateur');
+    ('Documentalist'), 
+    ('Adherent');
 
 -- Insert data into adherent table
 INSERT INTO user (firstname, lastname, address, phone, email, password, role_id)
 VALUES
-    ('Alice', 'Dupont', '123 Rue de la Paix, Paris', 123456789, 'alice.dupont@example.com','qsdfqsdfqsdfq', 2),
-    ('Bob', 'Martin', '456 Avenue des Champs, Lyon', 987654321, 'bob.martin@example.com','qsdfqsdfqsdf', 2),
-    ('Charlie', 'Durand', '789 Boulevard Saint-Michel, Marseille', 555123456, 'charlie.durand@example.com','qsdfqdfqsdf', 2),
+    ('Alice', 'Dupont', '123 Rue de la Paix, Paris', 123456789, 'alice.dupont@example.com','qsdfqsdfqsdfq', 3),
+    ('Bob', 'Martin', '456 Avenue des Champs, Lyon', 987654321, 'bob.martin@example.com','qsdfqsdfqsdf', 3),
+    ('Charlie', 'Durand', '789 Boulevard Saint-Michel, Marseille', 555123456, 'charlie.durand@example.com','qsdfqdfqsdf', 3),
     ('Diane', 'Bernard', '101 Rue du Faubourg, Toulouse', 444987123, 'diane.bernard@example.com','qsdfqsdfqsdf', 2),
     ('Eve', 'Lemoine', '202 Place de la Victoire, Bordeaux', 333789654, 'eve.lemoine@example.com','qdsfqsdfqsdf', 1);
 

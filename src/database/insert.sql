@@ -20,7 +20,7 @@ CREATE TABLE user (
     phone INT NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    role_id INT NOT NULL DEFAULT 2,
+    role_id INT NOT NULL DEFAULT 3,
     PRIMARY KEY (id),
     FOREIGN KEY (role_id) REFERENCES role (id) ON DELETE CASCADE
 );
