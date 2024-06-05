@@ -21,11 +21,11 @@ router.put("/ouvrage/:id", OuvrageController.update);
 router.delete("/ouvrage/:id", OuvrageController.deleteById);
 
 // CRUD User
-router.get("/user", UserController.read);
-router.get("/user/:id", UserController.readById);
-router.get("/user/:field/:value", UserController.readByField);
+router.get("/user",verifyToken, isAdmin, UserController.read);
+router.get("/user/:id", verifyToken, UserController.readById);
+router.get("/user/:field/:value",verifyToken, UserController.readByField);
 router.post("/user", authController.register);
-router.put("/user/:id", UserController.update);
+router.put("/user/:id",verifyToken, isAdmin, UserController.update);
 router.delete("/user/:id",verifyToken, isAdmin, UserController.deleteById);
 
 // CRUD Reservation

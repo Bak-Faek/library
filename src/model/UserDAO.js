@@ -91,15 +91,25 @@ export class UserDAO {
 
   update(firstname, lastname, address, phone, email, password, id) {
     return new Promise((resolve, reject) => {
-      const query = `update user SET firstname = ?, lastname = ?, address = ?, phone = ?, email=?, password=? WHERE id = ?;
+      bcrypt.hash(password, 10).then((passwordHash) => {
+        const query = `update user SET firstname = ?, lastname = ?, address = ?, phone = ?, email=?, password=? WHERE id = ?;
     `;
-      const values = [firstname, lastname, address, phone, email, password, id];
-      this.connection.execute(query, values, (err, result) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(result);
-        }
+        const values = [
+          firstname,
+          lastname,
+          address,
+          phone,
+          email,
+          passwordHash,
+          id,
+        ];
+        this.connection.execute(query, values, (err, result) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(result);
+          }
+        });
       });
     });
   }

@@ -16,6 +16,7 @@ const read = (req, res) => {
 };
 
 const readById = (req, res) => {
+  if (parseInt(req.params.id) === req.user.userID) {
     const id = req.params.id;
     userDAO
       .readById(id)
@@ -25,26 +26,28 @@ const readById = (req, res) => {
       .catch((error) => {
         res.json(error);
       });
-  };
+  } else {
+    res.status(403).json({ message: "Forbidden access" });
+  }
+};
 
-  const readByField = (req, res) => {
-    const field = req.params["field"];
-    const value = req.params["value"];
-    userDAO
-      .selectFilter(field, value)
-      .then((user) => {
-        res.json(user);
-      })
-      .catch((error) => {
-        res.json(error);
-      });
-  };
-  
+const readByField = (req, res) => {
+  const field = req.params["field"];
+  const value = req.params["value"];
+  userDAO
+    .selectFilter(field, value)
+    .then((user) => {
+      res.json(user);
+    })
+    .catch((error) => {
+      res.json(error);
+    });
+};
 
 const create = (req, res) => {
-  const { firstname, lastname, address, phone,email } = req.body;
+  const { firstname, lastname, address, phone, email } = req.body;
   userDAO
-    .create(firstname, lastname, address, phone,email)
+    .create(firstname, lastname, address, phone, email)
     .then((user) => {
       res.json(user);
     })
@@ -55,14 +58,15 @@ const create = (req, res) => {
 
 const update = (req, res) => {
   const id = req.params.id;
-  const { firstname, lastname, address, phone,email } = req.body;
+  const { firstname, lastname, address, phone, email, password } = req.body;
   userDAO
-    .update(firstname, lastname, address, phone,email, id)
-    .then((user) => {
-      res.json(user);
+    .update(firstname, lastname, address, phone, email, password, id)
+    .then(() => {
+      res.status(201).json({ message: "User updated successfully" });
     })
     .catch((error) => {
-      res.json(error);
+      console.error(error);
+      res.status(500).json({ message: "Failed to update user" });
     });
 };
 
