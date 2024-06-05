@@ -7,7 +7,6 @@ export default function verifyToken(req, res, next) {
           });
     }
   const token = req.headers.authorization.split(" ")[1];
-  console.log(token, "Header");
   jwt.verify(token, "secret", (err, decoded) => {
     if (!token) {
       return res.status(403).json({

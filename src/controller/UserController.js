@@ -16,19 +16,15 @@ const read = (req, res) => {
 };
 
 const readById = (req, res) => {
-  if (parseInt(req.params.id) === req.user.userID) {
-    const id = req.params.id;
-    userDAO
-      .readById(id)
-      .then((user) => {
-        res.json(user);
-      })
-      .catch((error) => {
-        res.json(error);
-      });
-  } else {
-    res.status(403).json({ message: "Forbidden access" });
-  }
+  const id = req.params.id;
+  userDAO
+    .readById(id)
+    .then((user) => {
+      res.json(user);
+    })
+    .catch((error) => {
+      res.json(error);
+    });
 };
 
 const readByField = (req, res) => {

@@ -1,6 +1,5 @@
 export default function isAdmin(req, res, next) {
-  console.log(req.user, "isadmin");
-  if (req.user.role === "Admin") {
+  if (req.user.role === "Admin" || parseInt(req.params.id) === req.user.userID) {
     next();
   } else {
     return res.status(403).json({ message: "Forbidden access" });

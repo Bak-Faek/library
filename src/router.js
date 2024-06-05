@@ -17,12 +17,12 @@ router.get("/ouvrage", OuvrageController.read);
 router.get("/ouvrage/:id", OuvrageController.readById);
 router.get("/ouvrage/:field/:value", OuvrageController.readByField);
 router.post("/ouvrage", verifyToken, OuvrageController.create);
-router.put("/ouvrage/:id", OuvrageController.update);
-router.delete("/ouvrage/:id", OuvrageController.deleteById);
+router.put("/ouvrage/:id", verifyToken, isAdmin, OuvrageController.update);
+router.delete("/ouvrage/:id",verifyToken, OuvrageController.deleteById);
 
 // CRUD User
 router.get("/user",verifyToken, isAdmin, UserController.read);
-router.get("/user/:id", verifyToken, UserController.readById);
+router.get("/user/:id", verifyToken,isAdmin, UserController.readById);
 router.get("/user/:field/:value",verifyToken, UserController.readByField);
 router.post("/user", authController.register);
 router.put("/user/:id",verifyToken, isAdmin, UserController.update);
