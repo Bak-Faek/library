@@ -4,11 +4,11 @@ export class LendingDAO {
     this.connection = db.connection;
   }
 
-  create(lending_date, return_date, adherent_id, ouvrage_id) {
+  create(lending_date, return_date, user_id, ouvrage_id) {
     return new Promise((resolve, reject) => {
-      const query = `INSERT INTO lending (lending_date, return_date, adherent_id, ouvrage_id) VALUES (?, ?, ?, ?);
+      const query = `INSERT INTO lending (lending_date, return_date, user_id, ouvrage_id) VALUES (?, ?, ?, ?);
       `;
-      const values = [lending_date, return_date, adherent_id, ouvrage_id];
+      const values = [lending_date, return_date, user_id, ouvrage_id];
       this.connection.execute(query, values, (err, result) => {
         if (err) {
           reject(err);
@@ -51,7 +51,7 @@ export class LendingDAO {
 
   selectFilter(filter, value) {
     return new Promise((resolve, reject) => {
-      const query = `SELECT * FROM lending JOIN adherent ON adherent_id = adherent.id JOIN ouvrage ON ouvrage_id = ouvrage.id WHERE ${filter} = ?;`;
+      const query = `SELECT * FROM lending JOIN user ON user_id = user.id JOIN ouvrage ON ouvrage_id = ouvrage.id WHERE ${filter} = ?;`;
       const values = [value];
       this.connection.execute(query, values, (err, result) => {
         if (err) {
@@ -63,11 +63,11 @@ export class LendingDAO {
     });
   }
 
-  update(lending_date, return_date, adherent_id, ouvrage_id,id) {
+  update(lending_date, return_date, user_id, ouvrage_id,id) {
     return new Promise((resolve, reject) => {
-      const query = `update lending SET lending_date = ?, return_date = ?, adherent_id = ?, ouvrage_id=? WHERE id = ?;
+      const query = `update lending SET lending_date = ?, return_date = ?, user_id = ?, ouvrage_id=? WHERE id = ?;
       `;
-      const values = [lending_date, return_date, adherent_id, ouvrage_id, id];
+      const values = [lending_date, return_date, user_id, ouvrage_id, id];
       this.connection.execute(query, values, (err, result) => {
         if (err) {
           reject(err);

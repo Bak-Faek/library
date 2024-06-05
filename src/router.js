@@ -3,17 +3,10 @@ import OuvrageController from "./controller/OuvrageController.js";
 import UserController from "./controller/UserController.js";
 import ReservationController from "./controller/ReservationController.js";
 import LendingController from "./controller/LendingController.js";
-import generateToken from "./model/service/generateToken.js";
 import verifyToken from "./model/service/verifyToken.js";
 import authController from "./controller/AuthController.js";
 
 const router = express.Router();
-
-// router.get("/token", (req, res) => {
-//   res.json({
-//     token: generateToken({ userID: 2 }),
-//   });
-// });
 
 router.post("/login", authController.login);
 router.get("/info",verifyToken, authController.info);

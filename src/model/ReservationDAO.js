@@ -4,10 +4,10 @@ export class ReservationDAO {
     this.connection = db.connection;
   }
 
-  create(reservation_date, adherent_id, ouvrage_id) {
+  create(reservation_date, user_id, ouvrage_id) {
     return new Promise((resolve, reject) => {
-      const query = `INSERT INTO reservation (reservation_date, adherent_id, ouvrage_id) VALUES (?, ?, ?);`;
-      const values = [reservation_date, adherent_id, ouvrage_id];
+      const query = `INSERT INTO reservation (reservation_date, user_id, ouvrage_id) VALUES (?, ?, ?);`;
+      const values = [reservation_date, user_id, ouvrage_id];
       this.connection.execute(query, values, (err, result) => {
         if (err) {
           reject(err);
@@ -48,7 +48,7 @@ export class ReservationDAO {
 
   selectFilter(filter, value) {
     return new Promise((resolve, reject) => {
-      const query = `SELECT * FROM reservation JOIN adherent ON adherent_id = adherent.id JOIN ouvrage ON ouvrage_id = ouvrage.id WHERE ${filter} = ?;`;
+      const query = `SELECT * FROM reservation JOIN user ON user_id = user.id JOIN ouvrage ON ouvrage_id = ouvrage.id WHERE ${filter} = ?;`;
       const values = [value];
       this.connection.execute(query, values, (err, result) => {
         if (err) {
@@ -60,10 +60,10 @@ export class ReservationDAO {
     });
   }
 
-  update(reservation_date, adherent_id, ouvrage_id, id) {
+  update(reservation_date, user_id, ouvrage_id, id) {
     return new Promise((resolve, reject) => {
-      const query = `UPDATE reservation SET reservation_date = ?, adherent_id = ?, ouvrage_id = ? WHERE id = ?;`;
-      const values = [reservation_date, adherent_id, ouvrage_id, id];
+      const query = `UPDATE reservation SET reservation_date = ?, user_id = ?, ouvrage_id = ? WHERE id = ?;`;
+      const values = [reservation_date, user_id, ouvrage_id, id];
       this.connection.execute(query, values, (err, result) => {
         if (err) {
           reject(err);

@@ -77,7 +77,7 @@ export class UserDAO {
 
   selectFilter(filter, value) {
     return new Promise((resolve, reject) => {
-      const query = `SELECT * FROM user JOIN role on adherent.role_id = role.id WHERE ${filter} = ?;`;
+      const query = `SELECT * FROM user JOIN role on user.role_id = role.id WHERE ${filter} = ?;`;
       const values = [value];
       this.connection.execute(query, values, (err, result) => {
         if (err) {
