@@ -53,17 +53,21 @@ const create = (req, res) => {
 };
 
 const update = (req, res) => {
-  const id = req.params.id;
-  const { firstname, lastname, address, phone, email, password } = req.body;
-  userDAO
-    .update(firstname, lastname, address, phone, email, password, id)
-    .then(() => {
-      res.status(201).json({ message: "User updated successfully" });
-    })
-    .catch((error) => {
-      console.error(error);
-      res.status(500).json({ message: "Failed to update user" });
-    });
+  if (parseInt(req.params.id) === req.user.userID) {
+    const id = req.params.id;
+    const { firstname, lastname, address, phone, email, password } = req.body;
+    userDAO
+      .update(firstname, lastname, address, phone, email, password, id)
+      .then(() => {
+        res.status(201).json({ message: "User updated successfully" });
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).json({ message: "Failed to update user" });
+      });
+  } else {
+    res.status(403).json({ message: "Forbidden access" });
+  }
 };
 
 const deleteById = (req, res) => {

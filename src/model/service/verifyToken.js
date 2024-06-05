@@ -18,7 +18,8 @@ export default function verifyToken(req, res, next) {
         message: "invalid token",
       });
     }
-    req.user = {userID : decoded.id, email : decoded.email, role : decoded.role };
+    console.log(decoded);
+    req.user = {userID : decoded.userID, email : decoded.email, role : decoded.role };
     next();
   });
   

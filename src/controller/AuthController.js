@@ -37,6 +37,7 @@ const login = (req, res) => {
   userDAO
     .login(email, password)
     .then(({ isAuthentificated, user}) => {
+      console.log(user);
       if (!isAuthentificated) {
         return res.status(401).json({ message: "invalid to login" });
       }
@@ -54,6 +55,7 @@ const login = (req, res) => {
 };
 
 const info = (req, res) => {
+  console.log(req.user);
   userDAO
     .readById(req.user.userID)
     .then((user) => {

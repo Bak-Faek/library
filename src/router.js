@@ -16,7 +16,7 @@ router.get("/info",verifyToken, authController.info);
 router.get("/ouvrage", OuvrageController.read);
 router.get("/ouvrage/:id", OuvrageController.readById);
 router.get("/ouvrage/:field/:value", OuvrageController.readByField);
-router.post("/ouvrage", verifyToken, OuvrageController.create);
+router.post("/ouvrage", verifyToken, isAdmin, OuvrageController.create);
 router.put("/ouvrage/:id", verifyToken, isAdmin, OuvrageController.update);
 router.delete("/ouvrage/:id",verifyToken, OuvrageController.deleteById);
 
