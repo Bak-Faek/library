@@ -70,11 +70,12 @@ const deleteById = (req, res) => {
   const id = req.params.id;
   userDAO
     .delete(id)
-    .then((user) => {
-      res.json(user);
+    .then(() => {
+      res.status(201).json({ message: "User deleted successfully" });
     })
     .catch((error) => {
-      res.json(error);
+      console.error(error);
+      res.status(500).json({ message: "Failed to delete user" });
     });
 };
 

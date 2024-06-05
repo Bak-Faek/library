@@ -5,6 +5,7 @@ import ReservationController from "./controller/ReservationController.js";
 import LendingController from "./controller/LendingController.js";
 import verifyToken from "./model/service/verifyToken.js";
 import authController from "./controller/AuthController.js";
+import isAdmin from "./controller/isAdmin.js";
 
 const router = express.Router();
 
@@ -25,7 +26,7 @@ router.get("/user/:id", UserController.readById);
 router.get("/user/:field/:value", UserController.readByField);
 router.post("/user", authController.register);
 router.put("/user/:id", UserController.update);
-router.delete("/user/:id", UserController.deleteById);
+router.delete("/user/:id",verifyToken, isAdmin, UserController.deleteById);
 
 // CRUD Reservation
 router.get("/reservation", ReservationController.read);

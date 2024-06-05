@@ -36,7 +36,7 @@ const login = (req, res) => {
   const { email, password } = req.body;
   userDAO
     .login(email, password)
-    .then(({ isAuthentificated, userID }) => {
+    .then(({ isAuthentificated, user}) => {
       if (!isAuthentificated) {
         return res.status(401).json({ message: "invalid to login" });
       }
@@ -44,7 +44,7 @@ const login = (req, res) => {
         .status(201)
         .json({
           message: "Authentification successful",
-          token: generateToken({ userId: userID, email: email }),
+          token: generateToken(user),
         });
     })
     .catch((err) => {

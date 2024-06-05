@@ -31,7 +31,7 @@ export class UserDAO {
 
   login(email, password) {
     return new Promise((resolve, reject) => {
-      const query = `select * from user where email = ?;
+      const query = `select user.id, firstname, lastname, email, password, role.role from user JOIN role ON user.role_id = role.id where email = ?;
     `;
       const values = [email];
       this.connection.execute(query, values, (err, result) => {
@@ -39,7 +39,7 @@ export class UserDAO {
         const hashPassword = result[0].password;
         console.log(result[0].id);
         bcrypt.compare(password, hashPassword).then((isValid) => {
-          resolve({ isAuthentificated: isValid, userID: result[0].id });
+          resolve({ isAuthentificated: isValid, user: result[0] });
         });
       });
     });
@@ -62,7 +62,7 @@ export class UserDAO {
 
   readById(id) {
     return new Promise((resolve, reject) => {
-      const query = `select id, firstname, lastname, email from user where id = ?;
+      const query = `select user.id, firstname, lastname, email, role.role from user JOIN role ON user.role_id = role.id where user.id = ?;
     `;
       const values = [id];
       this.connection.execute(query, values, (err, result) => {

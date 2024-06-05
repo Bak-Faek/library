@@ -5,7 +5,7 @@ export class Database {
   constructor() {
     this.connection = createConnection({
       host: "localhost",
-      user: "Banok",
+      user: "root",
       password: "Banokfaek1989+",
       database: "library",
     });
