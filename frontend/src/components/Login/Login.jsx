@@ -35,13 +35,16 @@ export default function Login() {
     })
       .then((response) => {
         if (response.status === 201) {
-            const user = response.json();
-            login(user)
-          navigate("/");
+          return response.json()
         } else {
           setError("Email ou mot de passe incorrect");
           navigate("/login");
         }
+      })
+      .then((data) => {
+        console.log(data);
+        login(data.user); // Assuming data.user contains the user information
+        navigate("/");
       })
       .catch(() => {
         console.error(error);

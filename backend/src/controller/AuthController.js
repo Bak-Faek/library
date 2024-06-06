@@ -44,6 +44,7 @@ const login = (req, res) => {
       return res
         .status(201)
         .json({
+          user,
           message: "Authentification successful",
           token: generateToken(user),
         });
