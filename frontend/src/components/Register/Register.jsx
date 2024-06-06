@@ -67,7 +67,7 @@ export default function Register() {
 
   return (
     <section className="generalContainer">
-      <h2>Enregistez-vous</h2>
+      <h2>Enregistrement</h2>
       <div className="registerContainer">
         <label htmlFor="prénom">
           Prénom
@@ -124,7 +124,7 @@ export default function Register() {
             onChange={handleChangePassword}
           />
         </label>
-        <button onClick={handleSubmit}>S'inscrire</button>
+        <button onClick={handleSubmit}>Confirmer</button>
       </div>
     </section>
   );
