@@ -7,15 +7,16 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RgisterPage";
 import App from "./App";
 import Ouvrages from "./components/Ouvrages/Ouvrages";
+import Profil from "./components/Profil/Profil";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    children:[
+    children: [
       {
         path: "/",
-        element: < Ouvrages/>,
+        element: <Ouvrages />,
       },
       {
         path: "/register",
@@ -25,9 +26,12 @@ const router = createBrowserRouter([
         path: "/login",
         element: <LoginPage />,
       },
-    ]
-  }
-
+      {
+        path: "/profil",
+        element: <Profil />,
+      },
+    ],
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

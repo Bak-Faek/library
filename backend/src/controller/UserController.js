@@ -16,15 +16,20 @@ const read = (req, res) => {
 };
 
 const readById = (req, res) => {
-  const id = req.params.id;
-  userDAO
-    .readById(id)
-    .then((user) => {
-      res.json(user);
-    })
-    .catch((error) => {
-      res.json(error);
-    });
+  if (
+    parseInt(req.params.id) === req.user.userID ||
+    req.user.role === "Admin"
+  ) {
+    const id = req.params.id;
+    userDAO
+      .readById(id)
+      .then((user) => {
+        res.json(user);
+      })
+      .catch((error) => {
+        res.json(error);
+      });
+  }
 };
 
 const readByField = (req, res) => {
@@ -53,7 +58,10 @@ const create = (req, res) => {
 };
 
 const update = (req, res) => {
-  if (parseInt(req.params.id) === req.user.userID) {
+  if (
+    parseInt(req.params.id) === req.user.userID ||
+    req.user.role === "Admin"
+  ) {
     const id = req.params.id;
     const { firstname, lastname, address, phone, email, password } = req.body;
     userDAO
@@ -71,7 +79,10 @@ const update = (req, res) => {
 };
 
 const deleteById = (req, res) => {
-  if (parseInt(req.params.id) === req.user.userID) {
+  if (
+    parseInt(req.params.id) === req.user.userID ||
+    req.user.role === "Admin"
+  ) {
     const id = req.params.id;
     userDAO
       .delete(id)
@@ -82,9 +93,8 @@ const deleteById = (req, res) => {
         console.error(error);
         res.status(500).json({ message: "Failed to delete user" });
       });
-  }
-  else{
-    res.status(401).json({ message: "Forbidden access" })
+  } else {
+    res.status(401).json({ message: "Forbidden access" });
   }
 };
 
