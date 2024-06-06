@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import './Login.css'
+import { Link, useNavigate } from "react-router-dom";
+import "./Login.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -70,6 +70,12 @@ export default function Login() {
           />
         </label>
         <button onClick={handleSubmit}>se connecter</button>
+        <div>
+          Vous n'avez pas encore de compte ?{" "}
+          <span>
+            <Link to="/register">Enregistrez-vous</Link>
+          </span>
+        </div>
       </div>
     </section>
   );

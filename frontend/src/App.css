@@ -8,3 +8,7 @@ a{
     list-style: none;
     color: black;
 }
+
+button{
+    cursor: pointer;
+}
