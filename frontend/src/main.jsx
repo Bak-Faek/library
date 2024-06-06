@@ -3,9 +3,9 @@ import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RgisterPage";
 import App from "./App";
-import Login from "./components/Login/Login";
-import Register from "./components/Register/Register";
 
 const router = createBrowserRouter([
   {
@@ -14,11 +14,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/register",
-    element: <Register />,
+    element: <RegisterPage />,
   },
   {
     path: "/login",
-    element: <Login />,
+    element: <LoginPage />,
   },
 ]);
 

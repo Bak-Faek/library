@@ -50,25 +50,23 @@ export default function Register() {
         password,
       }),
     })
-    .then(response => {
-      if (response.status === 201) {
-        navigate("/login");
-      } else {
-        return response.json().then(data => {
-          console.info(data);
-        });
-      }
-    })
-    .catch(err => {
-      console.error(err);
-    });
+      .then((response) => {
+        if (response.status === 201) {
+          navigate("/login");
+        } else {
+          return response.json().then((data) => {
+            console.info(data);
+          });
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
-  
 
-  
   return (
     <section>
-      <div>test</div>
+      <h2>Rgister</h2>
       <label htmlFor="prénom">
         Prénom
         <input

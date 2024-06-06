@@ -46,7 +46,7 @@ export default function Login() {
   };
   return (
     <section>
-      <div>test</div>
+      <h2>Login</h2>
       <label htmlFor="email">
         Email
         <input
