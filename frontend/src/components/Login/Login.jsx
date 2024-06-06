@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useUserContext } from "../../context/userContext";
 import "./Login.css";
 
 export default function Login() {
@@ -7,6 +8,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  const { login } = useUserContext();
   const navigate = useNavigate();
 
   // Gestionnaire de changement de l'email
@@ -33,8 +35,8 @@ export default function Login() {
     })
       .then((response) => {
         if (response.status === 201) {
-          //   const user = response.json();
-          //   login(user)
+            const user = response.json();
+            login(user)
           navigate("/");
         } else {
           setError("Email ou mot de passe incorrect");
