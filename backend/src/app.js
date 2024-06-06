@@ -1,15 +1,22 @@
-import express from "express"
+import express from "express";
+import cors from "cors";
 import router from "./router.js";
 
-const app = express()
-app.use(express.json());
-app.use('/', router)
 
+const app = express();
+app.use(
+  cors({
+    origin: `http://localhost:3000`, // keep this one, after checking the value in `backend/.env`
+    optionsSuccessStatus: 200,
+    credentials: true,
+  })
+);
+app.use(express.json());
+app.use("/", router);
 
 app.listen(8500, () => {
-    console.log("Server started ....")
-})
-
+  console.log("Server started ....");
+});
 
 export default app;
 
@@ -18,7 +25,6 @@ export default app;
 // import { OuvrageDAO } from "./model/OuvrageDAO.js";
 // import { ReservationDAO } from "./model/ReservationDAO.js";
 // import { LendingDAO } from "./model/LendingDAO.js";
-
 
 // const db = new Database();
 
@@ -69,4 +75,3 @@ export default app;
 // lendingDAO.delete(11);
 
 // db.stop();
-
