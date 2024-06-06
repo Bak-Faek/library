@@ -5,8 +5,10 @@ export default function OuvrageCard({ image, name, author }) {
   return (
     <section className="cardContainer">
       <img src={image} alt="" />
-      <p> {name}</p>
-      <p>{author}</p>
+      <div className="info">
+        <p> {name}</p>
+        <p className="author">{author}</p>
+      </div>
     </section>
   );
 }
