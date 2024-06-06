@@ -5,7 +5,7 @@ export default function Profil() {
   const [user, setUser] = useState(0);
 
   const { userData } = useUserContext();
-
+console.log(userData, 'data');
   useEffect(() => {
     {
       const apiUrl = `http://localhost:8500/user/${userData.user.userID}`;

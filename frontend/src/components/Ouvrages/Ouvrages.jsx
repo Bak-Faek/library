@@ -21,6 +21,7 @@ export default function Ouvrages() {
           ouvrage.map((ouvrages) => (
             <OuvrageCard
               key={ouvrages.id}
+              id ={ouvrages.id}
               image={ouvrages.image}
               name={ouvrages.name}
               author={ouvrages.author}
