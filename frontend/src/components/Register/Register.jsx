@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './Register.css'
 
 export default function Register() {
   const [firstname, setFirstName] = useState("");
@@ -65,64 +66,66 @@ export default function Register() {
   };
 
   return (
-    <section>
-      <h2>Rgister</h2>
-      <label htmlFor="prénom">
-        Prénom
-        <input
-          id="prénom"
-          name="prénom"
-          value={firstname}
-          onChange={handleFirstName}
-        />
-      </label>
-      <label htmlFor="nom">
-        Nom
-        <input
-          id="nom"
-          name="nom"
-          value={lastname}
-          onChange={handleChangeLastName}
-        />
-      </label>
-      <label htmlFor="address">
-        Address
-        <input
-          id="address"
-          name="address"
-          value={address}
-          onChange={handleChangeAddress}
-        />
-      </label>
-      <label htmlFor="phone">
-        Phone
-        <input
-          id="phone"
-          name="phone"
-          value={phone}
-          onChange={handleChangePhone}
-        />
-      </label>
-      <label htmlFor="email">
-        Email Address
-        <input
-          id="email"
-          name="email"
-          value={email}
-          onChange={handleChangeEmail}
-        />
-      </label>
-      <label htmlFor="password">
-        Password
-        <input
-          name="password"
-          type="password"
-          id="password"
-          value={password}
-          onChange={handleChangePassword}
-        />
-      </label>
-      <button onClick={handleSubmit}>S'inscrire</button>
+    <section className="generalContainer">
+      <h2>Enregistez-vous</h2>
+      <div className="registerContainer">
+        <label htmlFor="prénom">
+          Prénom
+          <input
+            id="prénom"
+            name="prénom"
+            value={firstname}
+            onChange={handleFirstName}
+          />
+        </label>
+        <label htmlFor="nom">
+          Nom
+          <input
+            id="nom"
+            name="nom"
+            value={lastname}
+            onChange={handleChangeLastName}
+          />
+        </label>
+        <label htmlFor="address">
+          Address
+          <input
+            id="address"
+            name="address"
+            value={address}
+            onChange={handleChangeAddress}
+          />
+        </label>
+        <label htmlFor="phone">
+          Phone
+          <input
+            id="phone"
+            name="phone"
+            value={phone}
+            onChange={handleChangePhone}
+          />
+        </label>
+        <label htmlFor="email">
+          Email Address
+          <input
+            id="email"
+            name="email"
+            value={email}
+            onChange={handleChangeEmail}
+          />
+        </label>
+        <label htmlFor="password">
+          Password
+          <input
+            name="password"
+            type="password"
+            id="password"
+            value={password}
+            onChange={handleChangePassword}
+          />
+        </label>
+        <button onClick={handleSubmit}>S'inscrire</button>
+      </div>
     </section>
   );
 }

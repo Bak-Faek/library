@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './Login.css'
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -45,29 +46,31 @@ export default function Login() {
       });
   };
   return (
-    <section>
-      <h2>Login</h2>
-      <label htmlFor="email">
-        Email
-        <input
-          id="email"
-          name="email"
-          value={email}
-          onChange={handleMailChange}
-        />
-      </label>
+    <section className="generalContainer">
+      <h2>Connectez-vous</h2>
+      <div className="loginContainer">
+        <label htmlFor="email">
+          Email
+          <input
+            id="email"
+            name="email"
+            value={email}
+            onChange={handleMailChange}
+          />
+        </label>
 
-      <label htmlFor="password">
-        Password
-        <input
-          id="password"
-          name="password"
-          type="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-      </label>
-      <button onClick={handleSubmit}>se connecter</button>
+        <label htmlFor="password">
+          Password
+          <input
+            id="password"
+            name="password"
+            type="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+        </label>
+        <button onClick={handleSubmit}>se connecter</button>
+      </div>
     </section>
   );
 }
