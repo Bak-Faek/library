@@ -13,31 +13,31 @@ export function UserContextProvider({ children }) {
     setUserData(userInfo);
   };
 
-//   const logout = async () => {
-//     try {
-//       const response = await fetch(
-//         `${import.meta.env.VITE_BACKEND_URL}/api/logout`,
-//         {
-//           method: "get",
-//           credentials: "include",
-//           headers: { "Content-Type": "application/json" },
-//         }
-//       );
+  const logout = async () => {
+    try {
+      const response = await fetch(
+        'http://localhost:8500/logout',
+        {
+          method: "get",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
-//       // Redirection vers la page de connexion si la création réussit
-//       if (response.status === 200) {
-//         setUserData(null);
-//       }
-//     } catch (err) {
-//       // Log des erreurs possibles
-//       console.error(err);
-//     }
-//   };
+      // Redirection vers la page de connexion si la création réussit
+      if (response.status === 200) {
+        setUserData(null);
+      }
+    } catch (err) {
+      // Log des erreurs possibles
+      console.error(err);
+    }
+  };
 
   useEffect(() => {}, [userData]);
 
   const contextValue = useMemo(() => {
-    return { userData, setUserData, login };
+    return { userData, setUserData, login, logout };
   }, [userData]);
 
   return (

@@ -52,6 +52,10 @@ const login = (req, res) => {
     });
 };
 
+const logout = (req, res) => {
+  res.clearCookie("user").sendStatus(200);
+};
+
 const info = (req, res) => {
   userDAO
     .readById(req.user.userID)
@@ -64,4 +68,4 @@ const info = (req, res) => {
     });
 };
 
-export default { register, info, login };
+export default { register, info, login, logout };

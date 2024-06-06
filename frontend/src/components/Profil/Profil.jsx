@@ -38,7 +38,6 @@ export default function Profil() {
           <p>Role : {user.role}</p>
         </div>
       )}
-      <p>test</p>
     </>
   );
 }

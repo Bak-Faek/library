@@ -3,24 +3,27 @@ import { useUserContext } from "../../context/userContext";
 import "./Navbar.css";
 
 export default function Navbar() {
-  const { userData } = useUserContext();
-  console.log(userData);
+  const { userData, logout } = useUserContext();
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
   return (
     <nav>
       <ul>
         <Link to="/">
           <li>Home</li>
         </Link>
-        {userData && (
-          <div>
-            <Link to="/profil">
-              <li>profil</li>
-            </Link>
-          </div>
+        {userData ? (
+          <Link to="/profil">
+            <li>profil</li>
+          </Link>
+        ) : (
+          <Link to="/login">
+            <li>Login</li>
+          </Link>
         )}
-        <Link to="/login">
-          <li>Login</li>
-        </Link>
+        {!userData || userData !== null   && <button onClick={handleLogout}>Logout</button>}
       </ul>
     </nav>
   );
