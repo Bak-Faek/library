@@ -43,7 +43,7 @@ export default function Login() {
       })
       .then((data) => {
         console.log(data);
-        login(data.user); // Assuming data.user contains the user information
+        login(data.user);
         navigate("/");
       })
       .catch(() => {

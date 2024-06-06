@@ -36,18 +36,15 @@ const login = (req, res) => {
   const { email, password } = req.body;
   userDAO
     .login(email, password)
-    .then(({ isAuthentificated, user}) => {
-      console.log(user);
+    .then(({ isAuthentificated, user }) => {
       if (!isAuthentificated) {
         return res.status(401).json({ message: "invalid to login" });
       }
-      return res
-        .status(201)
-        .json({
-          user,
-          message: "Authentification successful",
-          token: generateToken(user),
-        });
+      return res.status(201).json({
+        user,
+        message: "Authentification successful",
+        token: generateToken(user),
+      });
     })
     .catch((err) => {
       console.error(err);
@@ -56,7 +53,6 @@ const login = (req, res) => {
 };
 
 const info = (req, res) => {
-  console.log(req.user);
   userDAO
     .readById(req.user.userID)
     .then((user) => {
