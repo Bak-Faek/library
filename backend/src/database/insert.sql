@@ -40,6 +40,7 @@ CREATE TABLE ouvrage (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     author VARCHAR(100) NOT NULL,
+    image VARCHAR(255) NOT NULL,
     publication_date DATETIME,
     category_id INT NOT NULL,
     PRIMARY KEY (id),

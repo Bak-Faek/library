@@ -69,7 +69,7 @@ export default function Register() {
   return (
     <section>
       <div>test</div>
-      <label htmlFor="">
+      <label htmlFor="prénom">
         Prénom
         <input
           id="prénom"
@@ -78,17 +78,16 @@ export default function Register() {
           onChange={handleFirstName}
         />
       </label>
-      <label htmlFor="">
+      <label htmlFor="nom">
         Nom
         <input
           id="nom"
           name="nom"
-          autoComplete="nom"
           value={lastname}
           onChange={handleChangeLastName}
         />
       </label>
-      <label htmlFor="">
+      <label htmlFor="address">
         Address
         <input
           id="address"
@@ -97,7 +96,7 @@ export default function Register() {
           onChange={handleChangeAddress}
         />
       </label>
-      <label htmlFor="">
+      <label htmlFor="phone">
         Phone
         <input
           id="phone"
@@ -106,7 +105,7 @@ export default function Register() {
           onChange={handleChangePhone}
         />
       </label>
-      <label htmlFor="">
+      <label htmlFor="email">
         Email Address
         <input
           id="email"
@@ -115,7 +114,7 @@ export default function Register() {
           onChange={handleChangeEmail}
         />
       </label>
-      <label htmlFor="">
+      <label htmlFor="password">
         Password
         <input
           name="password"

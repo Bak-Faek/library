@@ -6,7 +6,7 @@ import router from "./router.js";
 const app = express();
 app.use(
   cors({
-    origin: `http://localhost:3000`, // keep this one, after checking the value in `backend/.env`
+    origin: 'http://localhost:3000', // keep this one, after checking the value in `backend/.env`
     optionsSuccessStatus: 200,
     credentials: true,
   })

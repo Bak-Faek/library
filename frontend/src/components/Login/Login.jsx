@@ -40,8 +40,8 @@ export default function Login() {
           navigate("/login");
         }
       })
-      .catch((err) => {
-        console.error(err);
+      .catch(() => {
+        console.error(error);
       });
   };
   return (
