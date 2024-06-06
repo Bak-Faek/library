@@ -32,8 +32,8 @@ export default function Login() {
     })
       .then((response) => {
         if (response.status === 201) {
-        //   const user = response.json();
-        //   login(user)
+          //   const user = response.json();
+          //   login(user)
           navigate("/");
         } else {
           setError("Email ou mot de passe incorrect");
@@ -47,21 +47,26 @@ export default function Login() {
   return (
     <section>
       <div>test</div>
-      <input
-        id="email"
-        label="Email Address"
-        name="email"
-        value={email}
-        onChange={handleMailChange}
-      />
-      <input
-        name="password"
-        label="Password"
-        type="password"
-        id="password"
-        value={password}
-        onChange={handlePasswordChange}
-      />
+      <label htmlFor="email">
+        Email
+        <input
+          id="email"
+          name="email"
+          value={email}
+          onChange={handleMailChange}
+        />
+      </label>
+
+      <label htmlFor="password">
+        Password
+        <input
+          id="password"
+          name="password"
+          type="password"
+          value={password}
+          onChange={handlePasswordChange}
+        />
+      </label>
       <button onClick={handleSubmit}>se connecter</button>
     </section>
   );
