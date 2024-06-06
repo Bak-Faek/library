@@ -26,7 +26,7 @@ router.get("/user/:id", verifyToken,isAdmin, UserController.readById);
 router.get("/user/:field/:value",verifyToken, UserController.readByField);
 router.post("/user", authController.register);
 router.put("/user/:id",verifyToken, isAdmin, UserController.update);
-router.delete("/user/:id",verifyToken, isAdmin, UserController.deleteById);
+router.delete("/user/:id",verifyToken, UserController.deleteById);
 
 // CRUD Reservation
 router.get("/reservation", ReservationController.read);

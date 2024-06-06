@@ -71,16 +71,21 @@ const update = (req, res) => {
 };
 
 const deleteById = (req, res) => {
-  const id = req.params.id;
-  userDAO
-    .delete(id)
-    .then(() => {
-      res.status(201).json({ message: "User deleted successfully" });
-    })
-    .catch((error) => {
-      console.error(error);
-      res.status(500).json({ message: "Failed to delete user" });
-    });
+  if (parseInt(req.params.id) === req.user.userID) {
+    const id = req.params.id;
+    userDAO
+      .delete(id)
+      .then(() => {
+        res.status(201).json({ message: "User deleted successfully" });
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).json({ message: "Failed to delete user" });
+      });
+  }
+  else{
+    res.status(401).json({ message: "Forbidden access" })
+  }
 };
 
 export default {
