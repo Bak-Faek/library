@@ -37,9 +37,17 @@ export class UserDAO {
       this.connection.execute(query, values, (err, result) => {
         if (err) return reject(err);
         const hashPassword = result[0].password;
-        console.log(result[0].id);
         bcrypt.compare(password, hashPassword).then((isValid) => {
-          resolve({ isAuthentificated: isValid, user:{ userID:result[0].id, firstname:result[0].firstname, lastname:result[0].lastname,email:result[0].email, role:result[0].role}});
+          resolve({
+            isAuthentificated: isValid,
+            user: {
+              userID: result[0].id,
+              firstname: result[0].firstname,
+              lastname: result[0].lastname,
+              email: result[0].email,
+              role: result[0].role,
+            },
+          });
         });
       });
     });

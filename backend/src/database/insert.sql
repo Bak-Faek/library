@@ -40,7 +40,8 @@ CREATE TABLE ouvrage (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     author VARCHAR(100) NOT NULL,
-    publication_date DATETIME,
+    imageURL VARCHAR(255) NOT NULL,
+    publication_date DATE,
     category_id INT NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (category_id) REFERENCES category (id) ON DELETE CASCADE

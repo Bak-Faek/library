@@ -10,7 +10,8 @@ import isAdmin from "./controller/isAdmin.js";
 const router = express.Router();
 
 router.post("/login", authController.login);
-router.get("/info",verifyToken, authController.info);
+router.get("/logout", authController.logout);
+router.get("/info", verifyToken, authController.info);
 
 // CRUD Ouvrage
 router.get("/ouvrage", OuvrageController.read);
@@ -18,15 +19,15 @@ router.get("/ouvrage/:id", OuvrageController.readById);
 router.get("/ouvrage/:field/:value", OuvrageController.readByField);
 router.post("/ouvrage", verifyToken, isAdmin, OuvrageController.create);
 router.put("/ouvrage/:id", verifyToken, isAdmin, OuvrageController.update);
-router.delete("/ouvrage/:id",verifyToken, OuvrageController.deleteById);
+router.delete("/ouvrage/:id", verifyToken, OuvrageController.deleteById);
 
 // CRUD User
-router.get("/user",verifyToken, isAdmin, UserController.read);
-router.get("/user/:id", verifyToken,isAdmin, UserController.readById);
-router.get("/user/:field/:value",verifyToken, UserController.readByField);
+router.get("/user", verifyToken, isAdmin, UserController.read);
+router.get("/user/:id", verifyToken, UserController.readById);
+router.get("/user/:field/:value", verifyToken, UserController.readByField);
 router.post("/user", authController.register);
-router.put("/user/:id",verifyToken, isAdmin, UserController.update);
-router.delete("/user/:id",verifyToken, isAdmin, UserController.deleteById);
+router.put("/user/:id", verifyToken, UserController.update);
+router.delete("/user/:id", verifyToken, UserController.deleteById);
 
 // CRUD Reservation
 router.get("/reservation", ReservationController.read);

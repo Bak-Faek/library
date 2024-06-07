@@ -54,14 +54,16 @@ const create = (req, res) => {
 
 const update = (req, res) => {
   const id = req.params.id;
-  const { name, author, publication_date, category_id } = req.body;
+  console.log(req.body);
+  const { name, author, imageURL, publication_date, category_id } = req.body;
   ouvrageDAO
-    .update(name, author, publication_date, category_id, id)
-    .then((allOuvrage) => {
-      res.json(allOuvrage);
+    .update(name, author, imageURL, publication_date, category_id, id)
+    .then(() => {
+      res.status(201).json({ message: "ouvrage updated successfully" });
     })
     .catch((error) => {
-      res.json(error);
+      console.error(error);
+      res.status(500).json({ message: "Failed to update ouvrage" });
     });
 };
 
