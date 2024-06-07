@@ -8,6 +8,7 @@ import RegisterPage from "./pages/RgisterPage";
 import App from "./App";
 import Ouvrages from "./components/Ouvrages/Ouvrages";
 import Profil from "./components/Profil/Profil";
+import UpdateOuvrage from "./components/Ouvrages/UpdateOuvrage/UpdateOuvrage";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Ouvrages />,
+      },
+      {
+        path: "/ouvrage/update/:id",
+        element: <UpdateOuvrage />,
       },
       {
         path: "/register",

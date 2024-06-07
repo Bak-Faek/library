@@ -13,25 +13,22 @@ export function UserContextProvider({ children }) {
     setUserData(userInfo);
   };
 
-  const logout = async () => {
-    try {
-      const response = await fetch(
-        'http://localhost:8500/logout',
-        {
-          method: "get",
-          credentials: "include",
-          headers: { "Content-Type": "application/json" },
+  const logout = () => {
+    fetch("http://localhost:8500/logout", {
+      method: "get",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+    })
+    // Redirection vers la page de connexion si la création réussit
+      .then((response) => {
+        if (response.status === 200) {
+          setUserData(null);
         }
-      );
-
-      // Redirection vers la page de connexion si la création réussit
-      if (response.status === 200) {
-        setUserData(null);
-      }
-    } catch (err) {
+      })
       // Log des erreurs possibles
-      console.error(err);
-    }
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   useEffect(() => {}, [userData]);

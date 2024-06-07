@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import OuvrageCard from "./OuvrageCard";
+import OuvrageCard from "./OuvrageCard/OuvrageCard";
 import './Ouvrages.css'
 
 export default function Ouvrages() {
@@ -22,9 +22,10 @@ export default function Ouvrages() {
             <OuvrageCard
               key={ouvrages.id}
               id ={ouvrages.id}
-              image={ouvrages.image}
+              image={ouvrages.imageURL}
               name={ouvrages.name}
               author={ouvrages.author}
+              date={ouvrages.publication_date}
             />
           ))}
       </div>

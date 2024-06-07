@@ -84,7 +84,7 @@ INSERT INTO
     ouvrage (
         name,
         author,
-        image,
+        imageURL,
         publication_date,
         category_id
     )
@@ -93,70 +93,70 @@ VALUES
         'Le Petit Prince',
         'Antoine de Saint-Exupéry',
         'https://m.media-amazon.com/images/I/710wth0vXZL._AC_UF1000,1000_QL80_.jpg',
-        '2024-05-01 10:00:00',
+        '2024-05-01',
         1
     ),
     (
         'A Brief History of Time',
         'Stephen Hawking',
         'https://m.media-amazon.com/images/I/91ebghaV-eL._AC_UF1000,1000_QL80_.jpg',
-        '2024-04-20 14:30:00',
+        '2024-04-20',
         2
     ),
     (
         'National Geographic',
         'Multiple Authors',
         'https://m.media-amazon.com/images/I/61uRQCNO5-L._AC_UF1000,1000_QL80_.jpg',
-        '2024-03-10 09:00:00',
+        '2024-03-10',
         3
     ),
     (
         'La Dolce Vita',
         'Federico Fellini',
         'https://m.media-amazon.com/images/I/71gRX2YlV-L._AC_UF1000,1000_QL80_.jpg',
-        '2024-02-01 12:00:00',
+        '2024-02-01',
         4
     ),
     (
         'Artificial Intelligence',
         'John McCarthy',
         'https://m.media-amazon.com/images/I/41CtbEUvoVL._AC_UF1000,1000_QL80_.jpg',
-        '2024-01-15 11:00:00',
+        '2024-01-15',
         5
     ),
     (
         'Science et Vie',
         'Multiple Authors',
         'https://m.media-amazon.com/images/I/51xSeKUWqXL._AC_UF1000,1000_QL80_.jpg',
-        '2024-01-10 13:00:00',
+        '2024-01-10',
         6
     ),
     (
         'El Laberinto del Fauno',
         'Guillermo del Toro',
         'https://m.media-amazon.com/images/I/71jjgIV4BDL._AC_UF1000,1000_QL80_.jpg',
-        '2024-03-20 17:00:00',
+        '2024-03-20',
         7
     ),
     (
         'Der Spiegel',
         'Multiple Authors',
         'https://m.media-amazon.com/images/I/91moVGHL7mL._AC_UF1000,1000_QL80_.jpg',
-        '2024-04-25 16:00:00',
+        '2024-04-25',
         8
     ),
     (
         "L'arte Italiana",
         'Various',
         'https://m.media-amazon.com/images/I/716Rs9HQFXL._AC_UF1000,1000_QL80_.jpg',
-        '2024-05-05 10:00:00',
+        '2024-05-05',
         9
     ),
     (
         'César et Rosalie',
         'Claude Sautet',
         'https://m.media-amazon.com/images/I/518x16D0AWL._AC_UF1000,1000_QL80_.jpg',
-        '2024-06-10 14:00:00',
+        '2024-06-10',
         10
     );
 

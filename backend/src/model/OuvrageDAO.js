@@ -61,11 +61,11 @@ export class OuvrageDAO {
     });
   }
 
-  update(name, author, publication_date, category_id, id) {
+  update(name, author,imageURL, publication_date, category_id, id) {
     return new Promise((resolve, reject) => {
-      const query = `update ouvrage SET name = ?, author = ?, publication_date = ?, category_id=? WHERE id = ?;
+      const query = `update ouvrage SET name = ?, author = ?,imageURL = ?, publication_date = ?, category_id=? WHERE id = ?;
     `;
-      const values = [name, author, publication_date, category_id, id];
+      const values = [name, author,imageURL, publication_date, category_id, id];
       this.connection.execute(query, values, (err, result) => {
         if (err) {
           reject(err);

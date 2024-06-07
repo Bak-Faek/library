@@ -23,7 +23,7 @@ export default function Navbar() {
             <li>Login</li>
           </Link>
         )}
-        {!userData || userData !== null   && <button onClick={handleLogout}>Logout</button>}
+        {!userData || userData !== null   && <button className='navButton' onClick={handleLogout}>Logout</button>}
       </ul>
     </nav>
   );
