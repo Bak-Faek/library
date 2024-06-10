@@ -53,8 +53,8 @@ const create = (req, res) => {
 };
 
 const update = (req, res) => {
+  console.log(req.body, 'body');
   const id = req.params.id;
-  console.log(req.body);
   const { name, author, imageURL, publication_date, category_id } = req.body;
   ouvrageDAO
     .update(name, author, imageURL, publication_date, category_id, id)
