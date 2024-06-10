@@ -14,7 +14,7 @@ export default function OuvrageCard({ id, image, name, author, date }) {
         `,
       {
         method: "delete",
-        headers: { Authorization: `Bearer ${userData.token}` },
+        headers: { Authorization: `Bearer ${userData.token}`, "Content-Type": "application/Json" },
         credentials: "include",
       }
     )

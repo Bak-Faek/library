@@ -13,7 +13,7 @@ console.log(userData, 'data');
       fetch(apiUrl, {
         method: "get",
         credentials: "include",
-        headers: { Authorization: `Bearer ${userData.token}` },
+        headers: { Authorization: `Bearer ${userData.token}`, "Content-Type": "application/Json" },
       })
         .then((response) => response.json())
         .then((data) => {
