@@ -55,7 +55,7 @@ export class UserDAO {
 
   read() {
     return new Promise((resolve, reject) => {
-      const query = `select * from user;
+      const query = `select user.id, firstname, lastname, address, phone, email, role.role from user JOIN role ON user.role_id = role.id;
     `;
       const values = [];
       this.connection.execute(query, values, (err, result) => {

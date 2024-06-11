@@ -58,7 +58,6 @@ const create = (req, res) => {
 };
 
 const update = (req, res) => {
-  console.log(req.body, 'body');
   if (
     parseInt(req.params.id) === req.user.userID ||
     req.user.role === "Admin"

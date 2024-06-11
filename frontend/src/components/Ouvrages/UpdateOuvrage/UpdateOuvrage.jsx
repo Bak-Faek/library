@@ -37,18 +37,13 @@ export default function UpdateOuvrage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log({
-      name,
-      author,
-      imageURL,
-      publication_date,
-      category_id,
-      id,
-    }, 'fetch');
     fetch(`http://localhost:8500/ouvrage/${id}`, {
       method: "put",
       credentials: "include",
-      headers: { "Authorization": `Bearer ${userData.token}`, "Content-Type": "application/Json"},
+      headers: {
+        Authorization: `Bearer ${userData.token}`,
+        "Content-Type": "application/Json",
+      },
       body: JSON.stringify({
         name,
         author,

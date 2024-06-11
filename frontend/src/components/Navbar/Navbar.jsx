@@ -15,15 +15,25 @@ export default function Navbar() {
           <li>Home</li>
         </Link>
         {userData ? (
-          <Link to="/profil">
-            <li>profil</li>
-          </Link>
+          <div>
+            <Link to="/profil">
+              <li>profil</li>
+            </Link>
+            <Link to="/dashboard">
+              <li>Dashboard</li>
+            </Link>
+          </div>
         ) : (
           <Link to="/login">
             <li>Login</li>
           </Link>
         )}
-        {!userData || userData !== null   && <button className='navButton' onClick={handleLogout}>Logout</button>}
+        {!userData ||
+          (userData !== null && (
+            <button className="navButton" onClick={handleLogout}>
+              Logout
+            </button>
+          ))}
       </ul>
     </nav>
   );

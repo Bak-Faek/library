@@ -9,6 +9,7 @@ import App from "./App";
 import Ouvrages from "./components/Ouvrages/Ouvrages";
 import Profil from "./components/Profil/Profil";
 import UpdateOuvrage from "./components/Ouvrages/UpdateOuvrage/UpdateOuvrage";
+import DashboardPage from "./pages/DashbordPage";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/profil",
         element: <Profil />,
+      },
+      {
+        path: "/dashboard",
+        element: <DashboardPage />,
       },
     ],
   },
