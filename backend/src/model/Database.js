@@ -1,13 +1,18 @@
+import dotenv from 'dotenv'
+dotenv.config()
 import { createConnection } from "mysql2";
+
+const { DB_HOST, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
+
 export class Database {
   connection = null;
 
   constructor() {
     this.connection = createConnection({
-      host: "localhost",
-      user: "Banok",
-      password: "Banokfaek1989+",
-      database: "library",
+      host: DB_HOST,
+      user: DB_USER,
+      password: DB_PASSWORD,
+      database: DB_NAME,
     });
   }
 
